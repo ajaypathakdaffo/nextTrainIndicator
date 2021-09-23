@@ -1,9 +1,9 @@
 import React from "react";
-import Home from "./Pages/home";
+import Home from "./Container";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Home />
     </div>
   );

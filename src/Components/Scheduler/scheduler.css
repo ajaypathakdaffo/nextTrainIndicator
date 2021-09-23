@@ -5,7 +5,8 @@
 .tableHeaderText {
   color: yellow;
 }
-th,td {
+th,
+td {
   border: 1px solid brown;
 }
 td {

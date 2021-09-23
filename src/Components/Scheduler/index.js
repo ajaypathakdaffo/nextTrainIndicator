@@ -16,9 +16,10 @@ let train = function (name, predicate) {
 let trainSchedulerEngine = function (trains) {
   let trainsFunctor = [...trains];
   let registerTrains = function (trains) {
-    return trains.map((train) => {
+    trains.forEach((train) => {
       trainsFunctor.push(train);
     });
+    return trainsFunctor;
   };
   let generateTrainSchedule = function (train, startDate, endDate) {
     // validate that date difference is maximum one day, else we should in think in different scale
@@ -68,7 +69,12 @@ let utilities = function () {
     return Math.round((endDate - startDate) / (1000 * 60));
   };
 
-  return { setInitialTime, departerTimeDiffInDays, departerTimeDiffInMinutes, addMinutes };
+  return {
+    setInitialTime,
+    departerTimeDiffInDays,
+    departerTimeDiffInMinutes,
+    addMinutes,
+  };
 };
 
 let utilitiesFactory = new utilities();
@@ -137,7 +143,7 @@ class ScheduledTrainTable extends React.Component {
 
   // update state
   schedulerTick() {
-    let engine = new trainSchedulerEngine(trains);
+    let engine = trainSchedulerEngine(trains);
     let endSchedulerDate = this.addMinutes(this.state.startSchedulerDate, 15);
     endSchedulerDate = new Date(endSchedulerDate).setSeconds(0);
     //transform data
@@ -159,7 +165,7 @@ class ScheduledTrainTable extends React.Component {
         minutesToArrive: v.minutesToArrive,
       };
     });
-    
+
     this.setState((prevState, props) => {
       return {
         data: pagedData,
@@ -172,7 +178,7 @@ class ScheduledTrainTable extends React.Component {
   }
   render() {
     return (
-      <table style={{width:'100%'}}>
+      <table style={{ width: "100%" }}>
         <tr>
           <th className="tableHeaderText">S no.</th>
           <th className="tableHeaderText">Train name</th>
