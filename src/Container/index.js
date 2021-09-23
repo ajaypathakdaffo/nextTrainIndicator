@@ -13,7 +13,7 @@ const NTIComponent = () => {
         </header>
         <section>
           <div className="schedularWrap">
-            <Schedular initialSetHours={5} schedulerMinutes={15} pageSize={3} />
+            <Schedular initialSetHours={5} schedulerMinutes={15} pageSize={2} />
           </div>
         </section>
         <footer>
