@@ -1,0 +1,16 @@
+.trainInfoText {
+  color: coral;
+  font-size: 20px;
+}
+.tableHeaderText {
+  color: yellow;
+}
+th,td {
+  border: 1px solid brown;
+}
+td {
+  padding: 5px 0px 5px 30px;
+}
+th {
+  font-size: 20px;
+}
